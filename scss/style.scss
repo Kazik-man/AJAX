@@ -1,0 +1,206 @@
+$colorBase: #ffcc00;
+@import 'vars.scss';
+@import 'reset.scss';
+@import 'mixins.scss';
+
+
+body {
+    background: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+​
+body, form, div, p, a, img, h1, h2, h3, h4, h5, h6, table, table tr, table td {
+    border: none;
+    color: #000000;
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+​
+input,
+textarea,
+select {
+    outline: none;
+    font-family: Arial;
+    font-size: 12px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+​
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+​
+a {
+    text-decoration: underline;
+    outline: none;
+    &:hover {
+        text-decoration: none;
+    }
+    span {
+        border: 1px solid red;
+    }
+}
+​
+h1, h2 {
+    font-size: 20px;
+    padding: 0 0 10px 0;
+    color: $colorBase;
+}
+
+.mainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+}
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px -15px -15px -15px;
+}
+.user {
+    width: 200px;
+    flex-grow: 1;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 45px 15px 15px 15px;
+    margin: 15px 15px 45px 15px;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &:before {
+        content: '';
+        position: absolute;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        background-image: url('../img/iconfinder_user_322506.svg');
+        background-position: center;
+        background-size: 70%;
+        background-repeat: no-repeat;
+    }
+
+    &:hover {
+        border-color: red;
+
+        &:before {
+            border-color: 2px solid red;
+        }
+    }
+
+    &--empty {
+        border: none;
+        padding: 0;
+        margin: 0 15px;
+
+        &:before {
+            display: none;
+        }
+    }
+
+    &__name {
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &__data {
+        margin: 10px 0 0 0;
+        color: rgba(82, 82, 82, 0.5);
+        position: relative;
+        padding: 0 0 0 25px;
+    }
+
+    &__data-icon {
+        position: absolute;
+        left: 0;
+    }
+}
+
+.user-info {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    transition-duration: 0.5s;
+
+    &__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: red;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    &--hidden {
+        transform: translateX(-100%);
+    }
+
+    &__load {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -32px;
+        width: 64px;
+        height: 64px;
+        // background-image: url(../img/712.gif);
+        font-size: 64px;
+        color: $colorBase;
+        animation: spin infinite 2s linear;
+    }
+}
+
+.user-post {
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 0 0 15px 0;
+    position: relative;
+    transition-duration: 0.3s;
+    background-color: #fff;
+
+    &:hover {
+        background-color: red;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    &__body {
+        margin: 10px 0 0 0;
+    }
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.5);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+
+    }
+}
